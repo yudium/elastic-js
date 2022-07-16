@@ -1,0 +1,23 @@
+{
+  "name": "elastic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yudium/elastic-js.git"
+  },
+  "keywords": [
+    "elasticsearch",
+    "elastic"
+  ],
+  "author": "Yudi Supriyadi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yudium/elastic-js/issues"
+  },
+  "homepage": "https://github.com/yudium/elastic-js#readme"
+}
