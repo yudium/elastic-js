@@ -37,14 +37,13 @@ export default class Elastic {
    * Make sure new index follows convention
    * because elasticsearch doesnt allow camel case.
    * @param name string
-   * @returns string
+   * @returns undefined
    */
   validateIndex(name: string) {
     const isNotValid = null === name.match(/^[a-z0-9\-]+$/);
     if (isNotValid) {
       throw new Error("Only snake-case allowed");
     }
-    return name;
   }
 
   async createDocument(index: string, type: string, body: Body): Promise<DocumentId> {
