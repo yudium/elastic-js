@@ -196,6 +196,10 @@ export default class Elastic {
           // 3. Function score:
           // this is complex and not explained enough by:
           // @see https://app.pluralsight.com/course-player?clipId=4624e890-c7b9-4b08-9195-a6d34ee7e137
+          //
+          // FUZZY SEARCH
+          // we want to match John when user typing Jahn? then we can use fuzzy:
+          // @see https://app.pluralsight.com/course-player?clipId=4624e890-c7b9-4b08-9195-a6d34ee7e137
         },
       },
     });
