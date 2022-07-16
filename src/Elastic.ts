@@ -125,7 +125,7 @@ export default class Elastic {
           // Let see:
           //
           // 0. Exact with term
-          // not analyzed and it should in same case:
+          // not analyzed and should exact term:
           //
           //    term: { name: "Iphone" },
           //
