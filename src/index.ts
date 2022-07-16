@@ -1,2 +1,2 @@
-import Elastic from './Elastic';
+import Elastic from "./Elastic";
 export default Elastic;
