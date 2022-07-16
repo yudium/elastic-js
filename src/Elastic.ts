@@ -180,7 +180,21 @@ export default class Elastic {
           //
           //
           // MANIPULATE SCORE ON RESULT
+          //
+          // 1. Negative term:
           // we can use negative term to reduce score as well:
+          // @see https://app.pluralsight.com/course-player?clipId=4624e890-c7b9-4b08-9195-a6d34ee7e137
+          //
+          // 2. Constant score:
+          // we also can add constant score if match
+          // @see https://app.pluralsight.com/course-player?clipId=4624e890-c7b9-4b08-9195-a6d34ee7e137
+          //
+          // 3. Disjunction max:
+          // i dont understand well but look at the resource:
+          // @see https://app.pluralsight.com/course-player?clipId=4624e890-c7b9-4b08-9195-a6d34ee7e137
+          //
+          // 3. Function score:
+          // this is complex and not explained enough by:
           // @see https://app.pluralsight.com/course-player?clipId=4624e890-c7b9-4b08-9195-a6d34ee7e137
         },
       },
