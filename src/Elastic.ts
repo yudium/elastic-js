@@ -101,10 +101,10 @@ export default class Elastic {
       index,
       type,
       body: {
+        sort: [{ _uid: { order: "asc" } }], // this one is used for predicted order in unit test
         query: {
           match_all: {},
         },
-        sort: [{ _uid: { order: "asc" } }],
       },
     });
     return result.body.hits.hits.map((h: Body) => h._source);
@@ -115,6 +115,7 @@ export default class Elastic {
       index,
       type,
       body: {
+        sort: [{ _uid: { order: "asc" } }], // this one is used for predicted order in unit test
         query: {
           match: { [field]: query },
 
@@ -177,7 +178,6 @@ export default class Elastic {
           //
           // @see: https://stackoverflow.com/a/37711845
         },
-        sort: [{ _uid: { order: "asc" } }],
       },
     });
 
@@ -185,7 +185,7 @@ export default class Elastic {
   }
 
   async deleteDocument(index: string, type: string, id: DocumentId) {
-    await this.client.delete({ index, type, id });
+    await this.client.delete({ index, type, id, refresh: "true" });
   }
 
   async deleteIndex(index: string): Promise<boolean> {

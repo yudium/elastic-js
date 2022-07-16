@@ -52,12 +52,12 @@ describe("operations", () => {
 
   test("able to search", async () => {
     await elastic.createDocument(index, type, { keyName: "aa" });
-    await elastic.createDocument(index, type, { keyName: "aabb" });
+    await elastic.createDocument(index, type, { keyName: "aa bb" });
     await elastic.createDocument(index, type, { keyName: "cc" });
     const result = await elastic.searchByField(index, type, "keyName", "aa");
     expect(result.length).toBe(2);
     expect(result[0].keyName).toBe("aa");
-    expect(result[1].keyName).toBe("aabb");
+    expect(result[1].keyName).toBe("aa bb");
   });
 
   test("able to get all", async () => {
