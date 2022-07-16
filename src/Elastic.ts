@@ -116,11 +116,61 @@ export default class Elastic {
       type,
       body: {
         query: {
-          // below code will match 'Iphone 12' on 'Iphone' but not 'Iphon' query
-          //    match: { [field]: query },
-          // to support partial text then use regex:
           // @see: https://stackoverflow.com/a/37711845
           regexp: { [field]: `.*${query}.*` },
+
+          // other than above we can also use several search techniques that
+          // explained by https://app.pluralsight.com/course-player?clipId=704351d5-be5e-4559-ad58-5e1b7763d40e.
+          //
+          // Let see:
+          //
+          // 0. Exact with term
+          // not analyzed and it should in same case:
+          //
+          //    term: { name: "Iphone" },
+          //
+          // will not matched "iphone"
+          // @see https://stackoverflow.com/a/26003404
+          //
+          // 1. Basic
+          // below code will match a document with name 'Iphone 12'
+          //
+          //    match: { name: "Iphone" },
+          //
+          // but if we search with 'Ipho' then it doesnt match.
+          //
+          // 2. Multi-match
+          // search in multiple fields.
+          //
+          //    multi_match: {
+          //      "query": "yourkeyword",
+          //      fields: ["firstName", "address"],
+          //    }
+          //
+          // 3. Match phrase
+          // also we can use match_phrase to get documents that matched it and not broken up:
+          //
+          //    "match_phrase": {
+          //      "address": "segwick street",
+          //    }
+          //
+          // 4. Using Wildcard
+          // we can use asterisk to match our pattern.
+          //
+          //  "wildcard": {
+          //    "firstname": { "value": "h*ll" },
+          //  }
+          //
+          // 4. Query string
+          // Other option is using query with some operator:
+          //
+          // "query_string": {
+          //   "query": "(new york city) OR (big apple)",
+          //   "default_field": "content"
+          // }
+          //
+          // @see https://stackoverflow.com/a/26003404
+          // @see https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-dsl-query-string-query
         },
         sort: [{ _uid: { order: "asc" } }],
       },
