@@ -116,8 +116,7 @@ export default class Elastic {
       type,
       body: {
         query: {
-          // @see: https://stackoverflow.com/a/37711845
-          regexp: { [field]: `.*${query}.*` },
+          match: { [field]: query },
 
           // other than above we can also use several search techniques that
           // explained by https://app.pluralsight.com/course-player?clipId=704351d5-be5e-4559-ad58-5e1b7763d40e.
@@ -157,20 +156,26 @@ export default class Elastic {
           // 4. Using Wildcard
           // we can use asterisk to match our pattern.
           //
-          //  "wildcard": {
-          //    "firstname": { "value": "h*ll" },
-          //  }
+          //    "wildcard": {
+          //      "firstname": { "value": "h*ll" },
+          //    }
           //
           // 4. Query string
           // Other option is using query with some operator:
           //
-          // "query_string": {
-          //   "query": "(new york city) OR (big apple)",
-          //   "default_field": "content"
-          // }
+          //    "query_string": {
+          //      "query": "(new york city) OR (big apple)",
+          //      "default_field": "content"
+          //    }
           //
           // @see https://stackoverflow.com/a/26003404
           // @see https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-dsl-query-string-query
+          //
+          // 5. Using regex:
+          //
+          //    regexp: { [field]: `.*${query}.*` },
+          //
+          // @see: https://stackoverflow.com/a/37711845
         },
         sort: [{ _uid: { order: "asc" } }],
       },
