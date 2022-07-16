@@ -198,9 +198,15 @@ export default class Elastic {
           // @see https://app.pluralsight.com/course-player?clipId=4624e890-c7b9-4b08-9195-a6d34ee7e137
           //
           // FUZZY SEARCH
+          //
           // we want to match John when user typing Jahn? then we can use fuzzy:
           // @see https://app.pluralsight.com/course-player?clipId=4624e890-c7b9-4b08-9195-a6d34ee7e137
           // but it can be a cost
+          //
+          // RANGE
+          // we can use range for greather-than and less-than:
+          // @see https://app.pluralsight.com/course-player?clipId=7b594334-612e-4499-baf5-0c465133c2c3
+          //
         },
       },
     });
