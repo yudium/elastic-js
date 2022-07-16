@@ -102,7 +102,7 @@ export default class Elastic {
       type,
       body: {
         query: {
-          match_all: {},
+          match_all: {}, // this should be empty
         },
         sort: [{ _uid: { order: "asc" } }],
       },
