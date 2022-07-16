@@ -177,6 +177,11 @@ export default class Elastic {
           //    regexp: { [field]: `.*${query}.*` },
           //
           // @see: https://stackoverflow.com/a/37711845
+          //
+          //
+          // MANIPULATE SCORE ON RESULT
+          // we can use negative term to reduce score as well:
+          // @see https://app.pluralsight.com/course-player?clipId=4624e890-c7b9-4b08-9195-a6d34ee7e137
         },
       },
     });
