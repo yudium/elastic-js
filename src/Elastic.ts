@@ -40,7 +40,7 @@ export default class Elastic {
    * @returns undefined
    */
   validateIndex(name: string) {
-    const isNotValid = null === name.match(/^[a-z0-9\-]+$/);
+    const isNotValid = null === name.match(/^[a-z0-9-]+$/);
     if (isNotValid) {
       throw new Error("Only snake-case allowed");
     }
